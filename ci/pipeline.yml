@@ -2,7 +2,7 @@ resources:
 - name: nmap-ci
   type: git
   source:
-    uri: https://github.com/kramse/nmap-ci
+    uri: git@github.com:kramse/nmap-ci.git
     branch: master
 
 jobs:
