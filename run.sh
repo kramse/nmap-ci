@@ -1,1 +1,1 @@
-fly -t ci execute -c build.yml
+fly -t ci execute -c ci/build.yml
