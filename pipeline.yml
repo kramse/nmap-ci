@@ -1,0 +1,14 @@
+resources:
+- name: nmap-ci
+  type: git
+  source:
+    uri: https://github.com/kramse/nmap-ci
+    branch: master
+
+jobs:
+- name: test-app
+  plan:
+  - get: nmap-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/build.yml
