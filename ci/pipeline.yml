@@ -11,4 +11,4 @@ jobs:
   - get: nmap-ci
     trigger: true
   - task: tests
-    file: nmap-ci/build.yml
+    file: nmap-ci/ci/build.yml
