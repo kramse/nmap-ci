@@ -6,9 +6,15 @@ resources:
     branch: master
 
 jobs:
-- name: test-app
+- name: check-ssh-algorithms
   plan:
   - get: nmap-ci
     trigger: true
   - task: tests
     file: nmap-ci/ci/build.yml
+- name: check-ssh-auth-methods
+  plan:
+  - get: nmap-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/ci/build2.yml
