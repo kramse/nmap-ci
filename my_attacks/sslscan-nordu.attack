@@ -13,5 +13,5 @@ Scenario: Ensure no low-security ciphers with short keys
     """
   Then the output should not contain:
     """
-    112 bits
+    56 bits
     """
