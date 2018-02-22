@@ -18,3 +18,15 @@ Feature: simple nmap attack (sanity check)
       password
       keyboard-interactive
       """
+
+Scenario: Verify server is available on standard web ports
+  When I launch an "nmap" attack with:
+    """
+    nmap -A -p 22 --script ssh2-enum-algos.nse <network>
+    """
+  Then the output should match /protocol 2.0/
+  And the output should not match:
+    """
+    des
+    3des
+    """
