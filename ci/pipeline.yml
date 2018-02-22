@@ -18,7 +18,7 @@ jobs:
 
 - name: Run Gauntlt attacks
   plan:
-  - get: gauntlt-ci
+  - get: nmap-ci
     trigger: true
   - task: tests
     file: nmap-ci/ci/run-gauntlt.yml
