@@ -1,20 +1,26 @@
+
+
+jobs:
+
+- name: check-ssh-algorithms
+  plan:
+  - get: nmap-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/ci/check-ssh-algorithm.yml
+
+- name: check-ssh-auth-methods
+  plan:
+  - get: nmap-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/ci/check-ssh-auth.yml
+
+
+
 resources:
 - name: nmap-ci
   type: git
   source:
     uri: https://github.com/kramse/nmap-ci
     branch: master
-
-jobs:
-- name: check-ssh-algorithms
-  plan:
-  - get: nmap-ci
-    trigger: true
-  - task: tests
-    file: nmap-ci/ci/build.yml
-- name: check-ssh-auth-methods
-  plan:
-  - get: nmap-ci
-    trigger: true
-  - task: tests
-    file: nmap-ci/ci/build2.yml
