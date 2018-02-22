@@ -1,0 +1,16 @@
+@slow
+Feature: Evaluate received cookies against expected.
+
+Background:
+  Given "curl" is installed
+  And the following profile:
+    | name     | value      |
+    | hostname | www.nordu.net |
+Scenario: Verify server is returning the cookies expected
+  When I launch a "curl" attack with:
+    """
+    curl --include --location --head --silent <hostname>
+    """
+  Then the following cookies should be received:
+    | name | secure | _rest              |
+    | NID  | false  | {'HttpOnly': None} |
