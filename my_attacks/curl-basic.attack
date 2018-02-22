@@ -1,5 +1,5 @@
 @slow
-Feature: Evaluate received cookies against expected.
+Feature: Use cURL to evaluate received cookies and other basic stuff against expected.
 
 Background:
   Given "curl" is installed

@@ -1,5 +1,5 @@
 @slow
-Feature: simple nmap attack (sanity check)
+Feature: simple SSH checks
 
   Background:
     Given "nmap" is installed
