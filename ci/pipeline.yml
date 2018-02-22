@@ -30,8 +30,3 @@ resources:
   source:
     uri: https://github.com/kramse/nmap-ci
     branch: master
-- name: gauntlt-ci
-  type: git
-  source:
-    uri: https://github.com/kramse/gauntlt-ci
-    branch: master
