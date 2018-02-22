@@ -1,0 +1,20 @@
+@slow
+Feature: simple nmap attack (sanity check)
+
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name     | value      |
+      | network | 10.80.0.0/28 |
+
+  Scenario: Verify server is available on standard web ports
+    When I launch an "nmap" attack with:
+      """
+      nmap -A -p 22 --script ssh-auth-methods.nse <network>
+      """
+    Then the output should match /publickey/
+    And the output should not match:
+      """
+      password
+      keyboard-interactive
+      """
