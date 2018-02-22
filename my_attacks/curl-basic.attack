@@ -1,5 +1,5 @@
 @slow
-Feature: Evaluate responses to various HTTP methods.
+Feature: Evaluate received cookies against expected.
 
 Background:
   Given "curl" is installed
@@ -20,3 +20,12 @@ Scenario Outline: Verify server responds correctly to various HTTP methods
     | TRACE  | Error 405 (Method Not Allowed) |
 #    | track  | Error 405 (Method Not Allowed) |
 #    | bogus | Error 405 (Method Not Allowed) |
+
+Scenario: Verify server is returning the cookies expected
+  When I launch a "curl" attack with:
+    """
+    curl --include --location --head --silent <hostname>
+    """
+  Then the following cookies should be received:
+    | name | secure | _rest              |
+    | NID  | false  | {'HttpOnly': None} |
