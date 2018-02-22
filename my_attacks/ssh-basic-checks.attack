@@ -6,6 +6,7 @@ Feature: simple nmap attack (sanity check)
     And the following profile:
       | name     | value      |
       | network | 10.80.0.0/28 |
+      | hostname | 10.80.0.194 |
 
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:
@@ -30,3 +31,27 @@ Scenario: Verify server is available on standard web ports
     des
     3des
     """
+
+Scenario: Verify that there are no unexpected ports open
+  When I launch an "nmap" attack with:
+    """
+    nmap -F <hostname>
+    """
+  Then the output should not contain:
+    """
+    23/tcp
+    25/tcp
+    """
+
+Scenario: Output to XML
+  When I launch an "nmap" attack with:
+    """
+    nmap -p 80,443 -oX foo.xml <hostname>
+    """
+  And the file "foo.xml" should contain XML:
+    | css                                                          |
+    | ports port[protocol="tcp"][portid="80"] state[state="open"]  |
+  And the file "foo.xml" should not contain XML:
+    | css                                                          |
+    | ports port[protocol="tcp"][portid="123"] state[state="open"] |
+    | ports port[protocol="tcp"][portid="443"] state[state="open"] |
