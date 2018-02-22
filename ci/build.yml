@@ -3,10 +3,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ubuntu
-#    repository: alpine
-#    repository: uzyexe/nmap
-#    repository: networkstatic/nmap
+#    repository: ubuntu
+    repository: kramse/nmap-ci
     tag: latest
 inputs:
 - name: nmap-ci
