@@ -11,7 +11,4 @@ Scenario: Ensure no low-security ciphers with short keys
     """
     sslscan <hostname>:443
     """
-  Then the output should not contain:
-    """
-    56 bits
-    """
+  Then the output should not match /[^0-9]56/
