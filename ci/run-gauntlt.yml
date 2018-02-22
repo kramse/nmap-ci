@@ -7,7 +7,7 @@ image_resource:
     repository: kramse/gauntlt-ci
     tag: latest
 inputs:
-- name: gauntlt-ci
+- name: nmap-ci
 
 run:
   path: ./nmap-ci/ci/run-gauntlt.sh
