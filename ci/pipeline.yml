@@ -16,6 +16,12 @@ jobs:
   - task: tests
     file: nmap-ci/ci/check-ssh-auth.yml
 
+- name: Run Gauntlt attacks
+  plan:
+  - get: gauntlt-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/ci/run-gauntlt.yml
 
 
 resources:
@@ -23,4 +29,9 @@ resources:
   type: git
   source:
     uri: https://github.com/kramse/nmap-ci
+    branch: master
+- name: gauntlt-ci
+  type: git
+  source:
+    uri: https://github.com/kramse/gauntlt-ci
     branch: master
