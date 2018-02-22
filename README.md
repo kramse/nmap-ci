@@ -1,5 +1,5 @@
 # nmap-ci
-Running Nmap in a docker from CI
+Running Nmap and other tools in a docker from Concourse CI.
 
 
 ## Usage
