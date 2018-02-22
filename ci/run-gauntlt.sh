@@ -6,7 +6,5 @@ set -e -x
 
 pushd nmap-ci
    echo Running Gauntlt
-   pwd
-   find .
-   gauntlt my_attacks/simple.attack
+   gauntlt my_attacks/*.attack
 popd

@@ -1,0 +1,17 @@
+@slow
+Feature: Run sslscan against a target
+
+Background:
+  And the following profile:
+    | name     | value      |
+    | hostname | www.nordu.net |
+
+Scenario: Ensure no low-security ciphers with short keys
+  When I launch a "generic" attack with:
+    """
+    sslscan <hostname>:443
+    """
+  Then the output should not contain:
+    """
+    112 bits
+    """
