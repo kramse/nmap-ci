@@ -8,7 +8,7 @@ Feature: simple SSH checks
       | network | 10.80.0.0/28 |
       | hostname | 10.80.0.194 |
 
-  Scenario: Verify server is available on standard web ports
+  Scenario: Verify server only allows publickey authentication
     When I launch an "nmap" attack with:
       """
       nmap -A -p 22 --script ssh-auth-methods.nse <network>
@@ -20,7 +20,7 @@ Feature: simple SSH checks
       keyboard-interactive
       """
 
-Scenario: Verify server is available on standard web ports
+Scenario: Verify servers only allows protcol 2 with good algorithms
   When I launch an "nmap" attack with:
     """
     nmap -A -p 22 --script ssh2-enum-algos.nse <network>
