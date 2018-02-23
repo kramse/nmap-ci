@@ -95,3 +95,6 @@ and you can then unpause it:
 root@nordukali:~/projects/nmap-ci# fly -t ci unpause-pipeline -p nmap-ci
 unpaused 'nmap-ci'
 ```
+
+
+# Problems observed with Concourse
