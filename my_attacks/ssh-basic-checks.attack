@@ -11,7 +11,7 @@ Feature: simple SSH checks
   Scenario: Verify server only allows publickey authentication
     When I launch an "nmap" attack with:
       """
-      nmap -A -p 22 --script ssh-auth-methods.nse <network>
+      nmap -A -p 22,2200 --script ssh-auth-methods.nse <network>
       """
     Then the output should match /publickey/
     And the output should not match:
@@ -23,7 +23,7 @@ Feature: simple SSH checks
 Scenario: Verify servers only allows protcol 2 with good algorithms
   When I launch an "nmap" attack with:
     """
-    nmap -A -p 22 --script ssh2-enum-algos.nse <network>
+    nmap -A -p 22,2200 --script ssh2-enum-algos.nse <network>
     """
   Then the output should match /protocol 2.0/
   And the output should not match:
