@@ -1,0 +1,18 @@
+@slow
+Feature: simple SSH checks from outside 
+
+  Background:
+    Given "nmap" is installed
+    And the following profile:
+      | name     | value      |
+      | network | 10.80.0.0/28 |
+      | hostname | 10.80.0.194 |
+
+Scenario: Verify that there are no unexpected ports open
+  When I launch an "nmap" attack with:
+    """
+    nmap -p 22 -oX foo.xml <hostname>
+    """
+  And the file "foo.xml" should not contain XML:
+    | css                                                         |
+    | ports port[protocol="tcp"][portid="22"] state[state="open"] |

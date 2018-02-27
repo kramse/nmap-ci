@@ -1,7 +1,4 @@
-
-
 jobs:
-
 - name: check-ssh-algorithms
   plan:
   - get: nmap-ci
@@ -23,6 +20,12 @@ jobs:
   - task: tests
     file: nmap-ci/ci/run-gauntlt.yml
 
+- name: Run Gauntlt attacks from outside
+  plan:
+  - get: nmap-ci
+    trigger: true
+  - task: tests
+    file: nmap-ci/ci/run-gauntlt-outside.yml
 
 resources:
 - name: nmap-ci
