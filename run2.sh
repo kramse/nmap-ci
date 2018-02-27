@@ -1,1 +1,1 @@
-fly -t ci set-pipeline -p nmap-ci -c ci/pipeline.yml
+fly -t ci set-pipeline -p pentest-ci -c ci/pipeline.yml
