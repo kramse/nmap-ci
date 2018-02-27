@@ -38,6 +38,9 @@ jobs:
 resources:
 - name: nmap-ci
   type: git
+  tags:
+    - inside
+    - outside
   source:
     uri: https://github.com/kramse/nmap-ci
     branch: master
