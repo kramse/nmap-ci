@@ -3,6 +3,7 @@ jobs:
   plan:
   - get: nmap-ci
     trigger: true
+    tags: [inside]
   - task: tests
     file: nmap-ci/ci/check-ssh-algorithm.yml
 
@@ -10,6 +11,7 @@ jobs:
   plan:
   - get: nmap-ci
     trigger: true
+    tags: [inside]
   - task: tests
     file: nmap-ci/ci/check-ssh-auth.yml
 
@@ -17,6 +19,7 @@ jobs:
   plan:
   - get: nmap-ci
     trigger: true
+    tags: [inside]
   - task: tests
     file: nmap-ci/ci/run-gauntlt.yml
 
@@ -24,6 +27,7 @@ jobs:
   plan:
   - get: nmap-ci
     trigger: true
+    tags: [outside]
   - task: tests
     file: nmap-ci/ci/run-gauntlt-outside.yml
 
