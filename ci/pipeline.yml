@@ -5,8 +5,7 @@ jobs:
     trigger: true
   - task: tests
     file: nmap-ci/ci/check-ssh-algorithm.yml
-    tags:
-      - inside
+    tags: [ inside ]
 
 - name: check-ssh-auth-methods
   plan:
@@ -14,8 +13,7 @@ jobs:
     trigger: true
   - task: tests
     file: nmap-ci/ci/check-ssh-auth.yml
-    tags:
-      - inside
+    tags: [ inside ]
 
 - name: Run Gauntlt attacks
   plan:
@@ -23,8 +21,7 @@ jobs:
     trigger: true
   - task: tests
     file: nmap-ci/ci/run-gauntlt.yml
-    tags:
-      - inside
+    tags: [ inside ]
 
 - name: Run Gauntlt attacks from outside
   plan:
@@ -32,14 +29,12 @@ jobs:
     trigger: true
   - task: tests
     file: nmap-ci/ci/run-gauntlt-outside.yml
-    tags:
-      - outside
+    tags: [ outside ]
 
 resources:
 - name: nmap-ci
   type: git
   tags:
-    - inside
     - outside
   source:
     uri: https://github.com/kramse/nmap-ci
